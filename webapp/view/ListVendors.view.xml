@@ -1,0 +1,128 @@
+<mvc:View
+	displayBlock="true"
+	controllerName="AppTest.controller.ListVendors"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+>
+	<App>
+		<pages>
+			<Page title="{i18n>appTitle}">
+				<content>
+					<IconTabBar
+						id="idTopLevelIconTabBar"
+						class="sapUiResponsiveContentPadding"
+						selectedKey="db"
+					>
+						<items>
+							<IconTabFilter
+								id="one"
+								text="{i18n>listVendorTitle}"
+							>
+								<Table items="{vendorsJSON>/Vendors}">
+									<headerToolbar>
+										<Toolbar>
+											<Label text="{i18n>nbVendor} : {vendorsJSON>/CountVendors}"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="{i18n>idVendor}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>nameVendor}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem
+											type="Navigation"
+											press="onPressVendorJson"
+										>
+											<cells>
+												<ObjectIdentifier text="{vendorsJSON>ID}"/>
+												<ObjectIdentifier text="{vendorsJSON>Name}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter
+								id="two"
+								text="{i18n>formVendorTitle}"
+							>
+								<MessageStrip
+									showIcon="true"
+									text="Un message informatif"
+									type="Information"
+								>
+								</MessageStrip>
+								<f:SimpleForm
+									id="simpleFormChange"
+									title="{i18n>vendor}"
+									editable="true"
+									class="editableForm sapUiSmallMarginTopBottom"
+								>
+									<f:content>
+										<Label text="{i18n>nameVendor}"/>
+										<Input/>
+										<Label text="{i18n>streetVendor}"/>
+										<Input/>
+										<Label text="{i18n>cityVendor}"/>
+										<Input/>
+										<Label text="{i18n>postalCodeVendor}"/>
+										<Input/>
+										<Label text="{i18n>countryVendor}"/>
+										<Select>
+											<items>
+												<core:Item text="{i18n>countryFrance}"/>
+												<core:Item text="{i18n>countryGermany}"/>
+											</items>
+										</Select>
+									</f:content>
+								</f:SimpleForm>
+								<Toolbar>
+									<!-- Permet de décaler les boutons à droite -->
+									<ToolbarSpacer/>
+									<Button
+										text="{i18n>layoutPublishButton}"
+										type="Success"
+										icon="sap-icon://outbox"
+									/>
+									<Button
+										text="{i18n>layoutDraftButton}"
+										icon="sap-icon://save"
+									/>
+								</Toolbar>
+							</IconTabFilter>
+							<IconTabFilter
+								id="three"
+								key="db"
+								text="{i18n>listVendorTitleOData}"
+							>
+								<List
+									headerText="{i18n>nbVendor} : "
+									items="{vendorsOData>/VendorSet}"
+								>
+									<items>
+										<ObjectListItem
+											title="{vendorsOData>Name}"
+											number="{vendorsOData>Capacity}"
+											intro="{vendorsOData>VendorID}"
+											numberState="{= ${vendorsOData>Capacity} &lt; 500 ? 'Error' : 'Success'}"
+											press="onPressVendorOData"
+										>
+											<firstStatus>
+												<ObjectStatus text="{parts: [{path: 'vendorsOData>Capacity'}], formatter : '.formatter.delivery'}"/>
+											</firstStatus>
+										</ObjectListItem>
+									</items>
+								</List>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

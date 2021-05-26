@@ -1,0 +1,24 @@
+<mvc:View
+	controllerName="AppTest.controller.Vendor"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+>
+	<Page
+		id="vendorPage"
+		navButtonPress="onNavPress"
+		showNavButton="true"
+		title="{i18n>detailVendorTitle}"
+	>
+		<ObjectHeader
+			title="{vendorModel>/vendor/Name}"
+			number="{i18n>idVendor} : {vendorModel>/vendor/ID}"
+		>
+			<attributes>
+				<ObjectAttribute text="{vendorModel>/vendor/Address/Street}"/>
+				<ObjectAttribute text="{vendorModel>/vendor/Address/City}"/>
+				<ObjectAttribute text="{vendorModel>/vendor/Address/PostalCode}"/>
+				<ObjectAttribute text="{vendorModel>/vendor/Address/Country}"/>
+			</attributes>
+		</ObjectHeader>
+	</Page>
+</mvc:View>

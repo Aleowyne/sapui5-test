@@ -1,0 +1,25 @@
+{
+  "CountVendors": "2",
+  "Vendors": [
+    {
+      "ID": 0,
+      "Name": "Fournisseur 1",
+      "Address": {
+        "Street": "12 rue du test",
+        "City": "Nantes",
+        "PostalCode": "44000",
+        "Country": "France"
+      }
+    },
+    {
+      "ID": 1,
+      "Name": "Fournisseur 2",
+      "Address": {
+        "Street": "22 rue du test",
+        "City": "Nantes",
+        "PostalCode": "44000",
+        "Country": "France"
+      }
+    }
+  ]
+}

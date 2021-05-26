@@ -1,0 +1,112 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+    "_version": "1.1.0",
+    "id": "AppTest",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "vendors_json_alias": {
+        "uri": "model/vendor.json",
+        "type": "JSON"
+      },
+      "vendors_odata_alias": {
+        "uri": "/destinations/demo/odata/SAMPLE/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "_version": "1.1.0",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_bluecrystal"
+    ]
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "rootView": {
+      "viewName": "AppTest.view.App",
+      "type": "XML",
+      "id": "app"
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "transition": "slide"
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "listVendors",
+          "target": "listVendors"
+        },
+        {
+          "pattern": "vendor/{selectedVendor}",
+          "name": "vendor",
+          "target": "vendor"
+        }
+      ],
+      "targets": {
+        "listVendors": {
+          "viewName": "AppTest.view.ListVendors",
+          "viewLevel": 1
+        },
+        "vendor": {
+          "viewName": "AppTest.view.Vendor",
+          "viewLevel": 2
+        }
+      }
+    },
+    "autoPrefixId": true,
+    "dependencies": {
+      "minUI5Version": "1.34",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.34.0"
+        },
+        "sap.m": {
+          "minVersion": "1.34.0"
+        },
+        "sap.ui.layout": {
+          "minVersion": "1.34.0"
+        }
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "AppTest.i18n.i18n"
+        }
+      },
+      "vendorsJSON": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "vendors_json_alias"
+      },
+      "vendorsOData": {
+        "dataSource": "vendors_odata_alias"
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    }
+  }
+}
