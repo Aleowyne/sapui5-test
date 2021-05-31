@@ -130,7 +130,26 @@
 								key="db"
 								text="{i18n>listVendorPriceTitle}"
 							>
-								<List items="{vendorsJSON>/Vendors}">
+								<List
+									id="priceVendorList"
+									items="{
+										path: 'vendorsJSON>/Vendors',
+										sorter: {
+											path: 'Category',
+											group: true
+										}
+									}"
+								>
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{i18n>listVendor}"/>
+											<ToolbarSpacer/>
+											<SearchField
+												width="50%"
+												search="onFilterVendor"
+											/>
+										</Toolbar>
+									</headerToolbar>
 									<items>
 										<ObjectListItem
 											title="{vendorsJSON>Name}"

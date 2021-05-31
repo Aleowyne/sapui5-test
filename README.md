@@ -8,4 +8,5 @@ Projet test SAPUI5 avec :
 - Envoi de données d'une vue à une autre
 - Validation des données d'un formulaire lors de la saisie
 - Conversion automatique avec les types de données (Exemple : Currency)
+- Utilisation des filtres, des tris et des groupes sur une liste
 - Autres points à venir ...

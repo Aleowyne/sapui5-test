@@ -5,6 +5,7 @@
     {
       "ID": 0,
       "Name": "Fournisseur 1",
+      "Category": "Catégorie 2",
       "Address": {
         "Street": "12 rue du test",
         "City": "Nantes",
@@ -17,6 +18,7 @@
     {
       "ID": 1,
       "Name": "Fournisseur 2",
+      "Category": "Catégorie 1",
       "Address": {
         "Street": "22 rue du test",
         "City": "Nantes",
