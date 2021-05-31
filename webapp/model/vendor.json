@@ -1,5 +1,6 @@
 {
   "CountVendors": "2",
+  "DefaultPrice": 500,
   "Vendors": [
     {
       "ID": 0,
@@ -9,7 +10,9 @@
         "City": "Nantes",
         "PostalCode": "44000",
         "Country": "France"
-      }
+      },
+      "Price": 150.92,
+      "Currency": "EUR"
     },
     {
       "ID": 1,
@@ -19,7 +22,9 @@
         "City": "Nantes",
         "PostalCode": "44000",
         "Country": "France"
-      }
+      },
+      "Price": 2000.50,
+      "Currency": "USD"
     }
   ]
 }

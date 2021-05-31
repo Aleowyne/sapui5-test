@@ -16,6 +16,8 @@
 				<Property Name="VendorID" Type="Edm.String" Nullable="false" MaxLength="10"/>
 				<Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255"/>
 				<Property Name="Capacity" Type="Edm.Decimal" Precision="13" Scale="3"/>
+				<Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3"/>
+				<Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5"/>
 			</EntityType>
 			<EntityContainer Name="/SAMPLE_Entities" m:IsDefaultEntityContainer="true">
 				<EntitySet Name="VendorSet" EntityType="/SAMPLE.Vendor"/>

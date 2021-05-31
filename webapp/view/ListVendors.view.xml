@@ -55,8 +55,7 @@
 									showIcon="true"
 									text="Un message informatif"
 									type="Information"
-								>
-								</MessageStrip>
+								/>
 								<f:SimpleForm
 									id="simpleFormChange"
 									title="{i18n>vendor}"
@@ -79,6 +78,13 @@
 												<core:Item text="{i18n>countryGermany}"/>
 											</items>
 										</Select>
+										<Label text="{i18n>priceVendor}"/>
+										<Input value="{
+												path: 'vendorsJSON>/DefaultPrice',
+												type: 'sap.ui.model.type.Float',
+												formatOptions: {minFractionDigits: 2},
+												constraints: {maximum : 3000}
+											}"/>
 									</f:content>
 								</f:SimpleForm>
 								<Toolbar>
@@ -98,10 +104,10 @@
 							<IconTabFilter
 								id="three"
 								key="db"
-								text="{i18n>listVendorTitleOData}"
+								text="{i18n>listVendorCapacityTitle}"
 							>
 								<List
-									headerText="{i18n>nbVendor} : "
+									headerText="{i18n>nbVendor} : A compléter"
 									items="{vendorsOData>/VendorSet}"
 								>
 									<items>
@@ -116,6 +122,30 @@
 												<ObjectStatus text="{parts: [{path: 'vendorsOData>Capacity'}], formatter : '.formatter.delivery'}"/>
 											</firstStatus>
 										</ObjectListItem>
+									</items>
+								</List>
+							</IconTabFilter>
+							<IconTabFilter
+								id="four"
+								key="db"
+								text="{i18n>listVendorPriceTitle}"
+							>
+								<List items="{vendorsJSON>/Vendors}">
+									<items>
+										<ObjectListItem
+											title="{vendorsJSON>Name}"
+											number="{
+													parts: [
+														{path: 'vendorsJSON>Price'},
+														{path: 'vendorsJSON>Currency'}
+													],
+													type: 'sap.ui.model.type.Currency',
+													formatOptions: {
+														currencyCode: false
+													}
+												}"
+											numberState="{= ${vendorsJSON>Price} > 500 ? 'Error' : 'Success'}"
+										/>
 									</items>
 								</List>
 							</IconTabFilter>

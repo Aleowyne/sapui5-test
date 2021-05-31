@@ -43,6 +43,7 @@
       "type": "XML",
       "id": "app"
     },
+    "handleValidation": true,
     "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",

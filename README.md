@@ -6,4 +6,6 @@ Projet test SAPUI5 avec :
 - Utilisation de formatter
 - Internationalisation (i18n)
 - Envoi de données d'une vue à une autre
+- Validation des données d'un formulaire lors de la saisie
+- Conversion automatique avec les types de données (Exemple : Currency)
 - Autres points à venir ...
