@@ -11,6 +11,10 @@ sap.ui.define([
     onInit: function () {
     },
 
+    /**
+     * Affichage des détails d'un fournisseur provenant d'une source JSON
+     * @param {sap.ui.base.Event} oEvent 
+     */
     onPressVendorJson: function (oEvent) {
       // Récupération de la ligne sélectionnée
       var sPath = oEvent.getSource().getBindingContext("vendorsJSON").getPath();
@@ -24,9 +28,25 @@ sap.ui.define([
 
     },
 
+    /**
+     * Affichage des détails d'un fournisseur provenant d'une source OData
+     * @param {sap.ui.base.Event} oEvent 
+     */
     onPressVendorOData: function (oEvent) {
+      var oSelectedItem = oEvent.getSource();
+      var oContext = oSelectedItem.getBindingContext("vendorsOData");
+      var sPath = oContext.getPath();
+      var oVendorDetailPanel = this.byId("vendorDetailsPanel");
+
+      oVendorDetailPanel.bindElement({ path: sPath, model: "vendorsOData" });
+      this.byId("vendorDetailsPanel").setVisible(true);
+
     },
 
+    /**
+     * Filtre sur le nom d'un fournisseur
+     * @param {sap.ui.base.Event} oEvent 
+     */
     onFilterVendor: function (oEvent) {
       var aFilter = [];
       var sQuery = oEvent.getParameter("query");

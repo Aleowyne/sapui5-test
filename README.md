@@ -5,8 +5,9 @@ Projet test SAPUI5 avec :
 - Affichage de données provenant de fichiers JSON et de services OData
 - Utilisation de formatter
 - Internationalisation (i18n)
-- Envoi de données d'une vue à une autre
+- Binding
 - Validation des données d'un formulaire lors de la saisie
 - Conversion automatique avec les types de données (Exemple : Currency)
 - Utilisation des filtres, des tris et des groupes sur une liste
+- Pagination
 - Autres points à venir ...

@@ -4,6 +4,7 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
 	xmlns:core="sap.ui.core"
 >
 	<App>
@@ -109,6 +110,9 @@
 								<List
 									headerText="{i18n>nbVendor} : A compléter"
 									items="{vendorsOData>/VendorSet}"
+									growing="true"
+									growingThreshold="5"
+									growingScrollToLoad="false"
 								>
 									<items>
 										<ObjectListItem
@@ -117,13 +121,28 @@
 											intro="{vendorsOData>VendorID}"
 											numberState="{= ${vendorsOData>Capacity} &lt; 500 ? 'Error' : 'Success'}"
 											press="onPressVendorOData"
+											type="Active"
 										>
 											<firstStatus>
-												<ObjectStatus text="{parts: [{path: 'vendorsOData>Capacity'}], formatter : '.formatter.delivery'}"/>
+												<ObjectStatus text="{
+													parts: [{path: 'vendorsOData>Capacity'}], 
+													formatter : '.formatter.delivery'
+													}"/>
 											</firstStatus>
 										</ObjectListItem>
 									</items>
 								</List>
+								<Panel
+									id="vendorDetailsPanel"
+									headerText="{i18n>detailVendorTitle}"
+									visible="false"
+								>
+									<l:Grid>
+										<Text text="{i18n>idVendor}: {vendorsOData>VendorID}"/>
+										<Text text="{i18n>nameVendor}: {vendorsOData>Name}"/>
+										<Text text="{i18n>capacityVendor} : {vendorsOData>Capacity}"/>
+									</l:Grid>
+								</Panel>
 							</IconTabFilter>
 							<IconTabFilter
 								id="four"
