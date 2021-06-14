@@ -1,0 +1,69 @@
+<mvc:View displayBlock="true"
+	controllerName="test1.controller.ListVendors"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<pages>
+			<Page title="{i18n>appTitle}">
+				<content>
+					<!-- Onglet "Liste des fournisseurs (OData)" affiché par défaut -->
+					<IconTabBar id="idTopLevelIconTabBar"
+						class="sapUiResponsiveContentPadding"
+						selectedKey="db">
+						<items>
+							<IconTabFilter id="one"
+								text="{i18n>listVendorJSONTitle}">
+								<Table items="{vendorsJSON>/Vendors}">
+									<headerToolbar>
+										<Toolbar>
+											<Label text="{i18n>headerTitle}"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="{i18n>idVendor}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>nameVendor}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>categoryVendor}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>priceVendor}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<ObjectIdentifier text="{vendorsJSON>ID}"/>
+												<ObjectIdentifier text="{vendorsJSON>Name}"/>
+												<ObjectIdentifier text="{vendorsJSON>Category}"/>
+												<ObjectIdentifier text="{vendorsJSON>Price} {vendorsJSON>Currency}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+
+							<IconTabFilter id="two"
+								key="db"
+								text="{i18n>listVendorODataTitle}">
+								<List headerText="{i18n>headerTitle}"
+									items="{vendorsOData>/VendorSet}">
+									<items>
+										<ObjectListItem title="{vendorsOData>Name}"
+											number="{vendorsOData>Price}"
+											intro="{vendorsOData>ID}"
+											numberUnit="{vendorsOData>Currency}">
+										</ObjectListItem>
+									</items>
+								</List>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Récupération de données JSON et OData</title>
+  <script id="sap-ui-bootstrap" type="text/javascript" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_fiori_3_dark" data-sap-ui-libs="sap.m,sap.ui.layout"
+    data-sap-ui-resourceroots='{"test1": "./"}' data-sap-ui-compatVersion="edge" data-sap-ui-async="true">
+    </script>
+
+  <script>
+    // Démarrer le MockServer (Simulation d'un backend)
+    jQuery.sap.require("sap.ui.core.util.MockServer");
+    var oMockServer = new sap.ui.core.util.MockServer({ rootUri: "/destinations/demo/odata/SAMPLE/" });
+
+    oMockServer.simulate("metadata.xml", { sMockdataBaseUrl: "mockdata", bGenerateMissingMockData: true });
+    oMockServer.start();
+
+    sap.ui.getCore().attachInit(function () {
+      new sap.ui.core.ComponentContainer({
+        name: "test1"
+      }).placeAt("content");
+    });
+  </script>
+</head>
+
+<body class="sapUiBody">
+  <div id="content"></div>
+</body>
+
+</html>
