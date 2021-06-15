@@ -1,0 +1,30 @@
+{
+  "Vendors": [
+    {
+      "ID": 0,
+      "Name": "Fournisseur 1",
+      "Category": "Catégorie 2",
+      "Address": {
+        "Street": "12 rue du test",
+        "City": "Paris",
+        "PostalCode": "75000",
+        "Country": "France"
+      },
+      "Price": 150.92,
+      "Currency": "EUR"
+    },
+    {
+      "ID": 1,
+      "Name": "Fournisseur 2",
+      "Category": "Catégorie 1",
+      "Address": {
+        "Street": "22 rue du test",
+        "City": "Paris",
+        "PostalCode": "75000",
+        "Country": "France"
+      },
+      "Price": 2000.50,
+      "Currency": "USD"
+    }
+  ]
+}

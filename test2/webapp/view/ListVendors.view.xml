@@ -1,0 +1,94 @@
+<mvc:View
+	displayBlock="true"
+	controllerName="test2.controller.ListVendors"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+>
+	<App>
+		<pages>
+			<Page title="{i18n>appTitle}">
+				<content>
+					<IconTabBar
+						id="idTopLevelIconTabBar"
+						class="sapUiResponsiveContentPadding"
+					>
+						<items>
+							<!-- Onglet pour pagination, formatter -->
+							<IconTabFilter
+								id="one"
+								text="{i18n>paginationFormatterTitle}"
+							>
+								<List
+									headerText="{i18n>headerTitle}"
+									items="{vendorsOData>/VendorSet}"
+									growing="true"
+									growingThreshold="5"
+									growingScrollToLoad="false"
+								>
+									<items>
+										<ObjectListItem
+											title="{vendorsOData>Name}"
+											number="{vendorsOData>Price}"
+											intro="{vendorsOData>ID}"
+											numberState="{= ${vendorsOData>Price} &lt; 500 ? 'Error' : 'Success'}"
+										>
+											<firstStatus>
+												<ObjectStatus text="{
+													parts: [{path: 'vendorsOData>Price'}], 
+													formatter : '.formatter.price'
+													}"/>
+											</firstStatus>
+										</ObjectListItem>
+									</items>
+								</List>
+							</IconTabFilter>
+							<!-- Onglet pour tri, groupe, filtre et conversion auto des types de données -->
+							<IconTabFilter
+								id="two"
+								text="{i18n>sortGroupFilterTitle}"
+							>
+								<List
+									id="priceVendorList"
+									items="{
+										path: 'vendorsJSON>/Vendors',
+										sorter: {
+											path: 'Category',
+											group: true
+										}
+									}"
+								>
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{i18n>headerTitle}"/>
+											<ToolbarSpacer/>
+											<SearchField
+												width="50%"
+												search="onFilterVendor"
+											/>
+										</Toolbar>
+									</headerToolbar>
+									<items>
+										<ObjectListItem
+											title="{vendorsJSON>Name}"
+											number="{
+													parts: [
+														{path: 'vendorsJSON>Price'},
+														{path: 'vendorsJSON>Currency'}
+													],
+													type: 'sap.ui.model.type.Currency',
+													formatOptions: {
+														currencyCode: false
+													}
+												}"
+											numberState="{= ${vendorsJSON>Price} &lt; 500 ? 'Error' : 'Success'}"
+										/>
+									</items>
+								</List>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
