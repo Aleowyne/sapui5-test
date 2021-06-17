@@ -1,0 +1,57 @@
+<mvc:View
+	displayBlock="true"
+	controllerName="test3.controller.ListVendors"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+>
+	<App>
+		<pages>
+			<Page title="{i18n>appTitle}">
+				<content>
+					<IconTabBar
+						id="idTopLevelIconTabBar"
+						class="sapUiResponsiveContentPadding"
+					>
+						<items>
+							<IconTabFilter
+								id="one"
+								text="{i18n>elementBindingTitle}"
+							>
+								<List
+									headerText="{i18n>headerTitle}"
+									items="{vendorsOData>/VendorSet}"
+									growing="true"
+									growingThreshold="5"
+									growingScrollToLoad="false"
+								>
+									<items>
+										<ObjectListItem
+											title="{vendorsOData>Name}"
+											number="{vendorsOData>Price}"
+											intro="{vendorsOData>ID}"
+											press="onPressVendorOData"
+											type="Active"
+										>
+										</ObjectListItem>
+									</items>
+								</List>
+								<Panel
+									id="vendorDetailsPanel"
+									headerText="{i18n>detailVendorTitle}"
+									visible="false"
+								>
+									<l:Grid>
+										<Text text="{i18n>idVendor}: {vendorsOData>ID}"/>
+										<Text text="{i18n>nameVendor}: {vendorsOData>Name}"/>
+										<Text text="{i18n>priceVendor} : {vendorsOData>Price}"/>
+									</l:Grid>
+								</Panel>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

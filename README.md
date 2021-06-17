@@ -12,7 +12,9 @@ Projet test SAPUI5 avec :
   - Conversion automatique avec les types de données (Exemple : Currency)
   - Pagination
 
+- Dossier test3 :
+  - Element Binding
+  
 - Dossiers en cours de création :
-  - Binding
   - Validation des données d'un formulaire lors de la saisie
   - Autres points à venir ...
