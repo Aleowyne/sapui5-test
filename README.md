@@ -15,6 +15,8 @@ Projet test SAPUI5 avec :
 - Dossier test3 :
   - Element Binding
   
-- Dossiers en cours de création :
-  - Validation des données d'un formulaire lors de la saisie
-  - Autres points à venir ...
+- Dossier test4 :
+  - Formulaire
+
+
+- Autres points à venir ...

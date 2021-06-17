@@ -1,0 +1,78 @@
+<mvc:View
+	displayBlock="true"
+	controllerName="test4.controller.ListVendors"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+>
+	<App>
+		<pages>
+			<Page title="{i18n>appTitle}">
+				<content>
+					<IconTabBar
+						id="idTopLevelIconTabBar"
+						class="sapUiResponsiveContentPadding"
+					>
+						<items>
+							<IconTabFilter
+								id="one"
+								text="{i18n>formVendorTitle}"
+							>
+								<MessageStrip
+									showIcon="true"
+									text="Un message informatif"
+									type="Information"
+								/>
+								<f:SimpleForm
+									id="simpleFormChange"
+									title="{i18n>vendorTitle}"
+									editable="true"
+									class="editableForm sapUiSmallMarginTopBottom"
+								>
+									<f:content>
+										<Label text="{i18n>nameVendor}"/>
+										<Input/>
+										<Label text="{i18n>streetVendor}"/>
+										<Input/>
+										<Label text="{i18n>cityVendor}"/>
+										<Input/>
+										<Label text="{i18n>postalCodeVendor}"/>
+										<Input/>
+										<Label text="{i18n>countryVendor}"/>
+										<Select>
+											<items>
+												<core:Item text="{i18n>countryFrance}"/>
+												<core:Item text="{i18n>countryGermany}"/>
+											</items>
+										</Select>
+										<Label text="{i18n>priceVendor}"/>
+										<Input value="{
+												path: 'vendorsJSON>/DefaultPrice',
+												type: 'sap.ui.model.type.Float',
+												formatOptions: {minFractionDigits: 2},
+												constraints: {maximum : 3000}
+											}"/>
+									</f:content>
+								</f:SimpleForm>
+								<Toolbar>
+									<!-- Permet de décaler les boutons à droite -->
+									<ToolbarSpacer/>
+									<Button
+										text="{i18n>layoutPublishButton}"
+										type="Success"
+										icon="sap-icon://outbox"
+									/>
+									<Button
+										text="{i18n>layoutDraftButton}"
+										icon="sap-icon://save"
+									/>
+								</Toolbar>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
