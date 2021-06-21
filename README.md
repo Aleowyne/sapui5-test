@@ -18,5 +18,7 @@ Projet test SAPUI5 avec :
 - Dossier test4 :
   - Formulaire
 
+- Dossier test5 :
+  - Tableau responsive
 
 - Autres points à venir ...

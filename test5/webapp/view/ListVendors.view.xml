@@ -1,0 +1,77 @@
+<mvc:View displayBlock="true"
+	controllerName="test5.controller.ListVendors"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<pages>
+			<Page title="{i18n>appTitle}">
+				<content>
+					<IconTabBar id="idTopLevelIconTabBar"
+						class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter
+								id="one"
+								text="{i18n>listProductTitle}"
+							>
+								<Table id="table"
+									width="auto"
+									class="sapUiResponsiveMargin"
+									items="{ 
+											path: 'vendorsOData>/ProductSet',
+											parameters: {
+												expand: 'ToVendor'
+											}
+										}"
+									growing="true"
+									growingScrollToLoad="true">
+
+									<headerToolbar>
+										<Toolbar>
+											<Title id="tableHeader" text="{i18n>listProductTitle}"/>
+										</Toolbar>
+									</headerToolbar>
+
+									<columns>
+										<Column id="nameColumn">
+											<Text text="{i18n>nameColumnTitle}"
+												id="nameColumnTitle"/>
+										</Column>
+										<Column id="vendorNameColumn"
+											demandPopin="true"
+											minScreenWidth="Tablet">
+											<Text text="{i18n>vendorColumnTitle}"/>
+										</Column>
+										<Column id="webAddressColumn"
+											demandPopin="false"
+											minScreenWidth="Tablet">
+											<Text text="{i18n>webAddressColumnTitle}"/>
+										</Column>
+										<Column id="priceColumn"
+											hAlign="End">
+											<Text text="{i18n>priceColumnTitle}"
+												id="priceColumnTitle"/>
+										</Column>
+									</columns>
+
+									<items>
+										<ColumnListItem>
+											<cells>
+												<ObjectIdentifier title="{vendorsOData>ID}"
+													text="{vendorsOData>Name}"/>
+												<Text text="{vendorsOData>ToVendor/VendorName}"/>
+												<Link text="{vendorsOData>ToVendor/WebAddress}"
+													href="{vendorsOData>ToVendor/WebAddress}"
+													target="_blank"/>
+												<ObjectNumber number="{vendorsOData>Price}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

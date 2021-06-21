@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema 
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="/SAMPLE"
+			xml:lang="en"
+			sap:schema-version="1">
+			<EntityType Name="Vendor">
+				<Key>
+					<PropertyRef Name="VendorID"/>
+				</Key>
+				<Property Name="VendorID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+				<Property Name="VendorName" Type="Edm.String" Nullable="false" MaxLength="255"/>
+				<Property Name="WebAddress" Type="Edm.String" sap:sortable="false" sap:filterable="false" sap:semantics="url"/>
+				 <NavigationProperty Name="ToProducts" Relationship="/SAMPLE.Assoc_Vendor_Products" FromRole="FromRole_Assoc_Vendor_Products" ToRole="ToRole_Assoc_Vendor_Products"/>
+			</EntityType>
+
+			<EntityType Name="Product">
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+				<Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255"/>
+				<Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3"/>
+				<Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+				<Property Name="VendorID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+				<NavigationProperty Name="ToVendor" Relationship="/SAMPLE.Assoc_Products_Vendor" FromRole="FromRole_Assoc_Products_Vendor" ToRole="ToRole_Assoc_Products_Vendor"/>
+			</EntityType>
+
+      <Association Name="Assoc_Products_Vendor" sap:content-version="1">
+        <End Type="/SAMPLE.Vendor" Multiplicity="1" Role="FromRole_Assoc_Vendor_Products"/>
+        <End Type="/SAMPLE.Product" Multiplicity="*" Role="ToRole_Assoc_Vendor_Products"/>
+
+        <ReferentialConstraint>
+          <Principal Role="FromRole_Assoc_Products_Vendor">
+            <PropertyRef Name="VendorID"/>
+          </Principal>
+          <Dependent Role="ToRole_Assoc_Products_Vendor">
+            <PropertyRef Name="VendorID"/>
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+
+			<EntityContainer Name="/SAMPLE_Entities" m:IsDefaultEntityContainer="true">
+				<EntitySet Name="VendorSet" EntityType="/SAMPLE.Vendor"/>
+				<EntitySet Name="ProductSet" EntityType="/SAMPLE.Product"/>
+
+        <AssociationSet Name="Assoc_Products_Vendor_AssocSet" Association="/SAMPLE.Assoc_Products_Vendor" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+          <End EntitySet="VendorSet" Role="ToRole_Assoc_Products_Vendor"/>
+          <End EntitySet="ProductSet" Role="FromRole_Assoc_Products_Vendor"/>
+        </AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
