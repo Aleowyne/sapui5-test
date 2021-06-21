@@ -2,7 +2,7 @@
   "_version": "1.1.0",
   "sap.app": {
     "_version": "1.1.0",
-    "id": "test5",
+    "id": "test6",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "title": "{{appTitle}}",
@@ -35,7 +35,7 @@
   "sap.ui5": {
     "_version": "1.1.0",
     "rootView": {
-      "viewName": "test5.view.App",
+      "viewName": "test6.view.App",
       "type": "XML",
       "id": "app"
     },
@@ -51,13 +51,13 @@
       "routes": [
         {
           "pattern": "",
-          "name": "ListProducts",
-          "target": "ListProducts"
+          "name": "listProducts",
+          "target": "listProducts"
         }
       ],
       "targets": {
-        "ListProducts": {
-          "viewName": "test5.view.ListProducts",
+        "listProducts": {
+          "viewName": "test6.view.listProducts",
           "viewLevel": 1
         }
       }
@@ -81,7 +81,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "test5.i18n.i18n"
+          "bundleName": "test6.i18n.i18n"
         }
       },
       "vendorsOData": {

@@ -1,5 +1,5 @@
 <mvc:View displayBlock="true"
-	controllerName="test5.controller.ListVendors"
+	controllerName="test5.controller.ListProducts"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 	<App>

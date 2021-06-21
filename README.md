@@ -12,13 +12,12 @@ Projet test SAPUI5 avec :
   - Conversion automatique avec les types de données (Exemple : Currency)
   - Pagination
 
-- Dossier test3 :
-  - Element Binding
+- Dossier test3 : Element Binding
   
-- Dossier test4 :
-  - Formulaire
+- Dossier test4 : Formulaire
 
-- Dossier test5 :
-  - Tableau responsive
+- Dossier test5 : Tableau responsive
+
+- Dossier test6 : Quick Filter
 
 - Autres points à venir ...
